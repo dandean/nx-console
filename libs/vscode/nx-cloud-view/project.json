@@ -3,8 +3,6 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/vscode/nx-cloud-view/src",
   "projectType": "library",
-  "tags": [
-    "type:vscode"
-  ],
+  "tags": ["type:vscode"],
   "targets": {}
 }
