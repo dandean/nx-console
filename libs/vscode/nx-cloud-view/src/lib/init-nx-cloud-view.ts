@@ -1,7 +1,8 @@
 import { onWorkspaceRefreshed } from '@nx-console/vscode/lsp-client';
 import { getNxCloudStatus } from '@nx-console/vscode/nx-workspace';
+import { getNxlsOutputChannel } from '@nx-console/vscode/output-channels';
 import { CliTaskProvider } from '@nx-console/vscode/tasks';
-import { commands, ExtensionContext, tasks } from 'vscode';
+import { commands, ExtensionContext, window } from 'vscode';
 
 export function initNxCloudView(context: ExtensionContext) {
   const setContext = async () => {
@@ -21,6 +22,26 @@ export function initNxCloudView(context: ExtensionContext) {
         command: 'connect',
         flags: [],
       });
+    }),
+    commands.registerCommand('nxConsole.openCloudApp', async () => {
+      const cloudUrl = (await getNxCloudStatus())?.nxCloudUrl;
+
+      if (cloudUrl) {
+        const cloudUrlWithTracking = `${cloudUrl}?utm_source=nxconsole`;
+        commands.executeCommand('vscode.open', cloudUrlWithTracking);
+      } else {
+        window
+          .showErrorMessage(
+            'Something went wrong while retrieving the Nx Cloud URL.',
+            'Open Logs',
+            'OK'
+          )
+          .then((selection) => {
+            if (selection === 'Open Logs') {
+              getNxlsOutputChannel().show();
+            }
+          });
+      }
     })
   );
 }

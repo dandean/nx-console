@@ -1,8 +1,4 @@
-import { getNxWorkspacePath } from '@nx-console/vscode/configuration';
-import {
-  getShellExecutionForConfig,
-  getTelemetry,
-} from '@nx-console/vscode/utils';
+import { getTelemetry } from '@nx-console/vscode/utils';
 import {
   commands,
   ExtensionContext,

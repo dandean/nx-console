@@ -775,7 +775,7 @@
       },
       {
         "view": "nxCloud",
-        "contents": "You're connected to Nx Cloud! \n [View Nx Cloud App](https://nx.app?utm_source=nxconsole) \n To learn more about Nx Cloud, check out [Why Nx Cloud?](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nxconsole) or get an overview of [Nx Cloud features](https://nx.dev/ci/features?utm_source=nxconsole). ",
+        "contents": "You're connected to Nx Cloud! \n [View Nx Cloud App](command:nxConsole.openCloudApp) \n To learn more about Nx Cloud, check out [Why Nx Cloud?](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nxconsole) or get an overview of [Nx Cloud features](https://nx.dev/ci/features?utm_source=nxconsole). ",
         "when": "nxConsole.connectedToCloud"
       },
       {

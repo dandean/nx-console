@@ -163,6 +163,7 @@ export const NxCloudStatusRequest: RequestType<
   undefined,
   {
     isConnected: boolean;
+    nxCloudUrl?: string;
   },
   unknown
 > = new RequestType('nx/cloudStatus');
