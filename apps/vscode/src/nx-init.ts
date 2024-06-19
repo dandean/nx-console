@@ -30,6 +30,7 @@ export function initNxInit(context: ExtensionContext) {
           cwd: workspacePath,
         })
       );
+      task.presentationOptions.focus = true;
 
       tasks.executeTask(task);
     })

@@ -158,3 +158,11 @@ export const NxTargetsForConfigFileRequest: RequestType<
   Record<string, TargetConfiguration>,
   unknown
 > = new RequestType('nx/targetsForConfigFile');
+
+export const NxCloudStatusRequest: RequestType<
+  undefined,
+  {
+    isConnected: boolean;
+  },
+  unknown
+> = new RequestType('nx/cloudStatus');

@@ -3,17 +3,8 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/vscode/nx-cloud-view/src",
   "projectType": "library",
-  "tags": [],
-  "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/vscode/nx-cloud-view",
-        "main": "libs/vscode/nx-cloud-view/src/index.ts",
-        "tsConfig": "libs/vscode/nx-cloud-view/tsconfig.lib.json",
-        "assets": ["libs/vscode/nx-cloud-view/*.md"]
-      }
-    }
-  }
+  "tags": [
+    "type:vscode"
+  ],
+  "targets": {}
 }

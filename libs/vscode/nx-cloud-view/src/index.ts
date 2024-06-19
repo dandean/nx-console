@@ -1,1 +1,1 @@
-export * from './lib/init-vscode-nx-cloud-view';
+export * from './lib/init-nx-cloud-view';
