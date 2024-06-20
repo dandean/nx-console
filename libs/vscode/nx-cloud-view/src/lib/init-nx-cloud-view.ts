@@ -2,6 +2,7 @@ import { onWorkspaceRefreshed } from '@nx-console/vscode/lsp-client';
 import { getNxCloudStatus } from '@nx-console/vscode/nx-workspace';
 import { getNxlsOutputChannel } from '@nx-console/vscode/output-channels';
 import { CliTaskProvider } from '@nx-console/vscode/tasks';
+import { getTelemetry } from '@nx-console/vscode/utils';
 import { commands, ExtensionContext, window } from 'vscode';
 
 export function initNxCloudView(context: ExtensionContext) {
@@ -18,6 +19,7 @@ export function initNxCloudView(context: ExtensionContext) {
 
   context.subscriptions.push(
     commands.registerCommand('nx.connectToCloud', async () => {
+      getTelemetry().featureUsed('nx.connectToCloud');
       CliTaskProvider.instance.executeTask({
         command: 'connect',
         flags: [],
@@ -27,6 +29,7 @@ export function initNxCloudView(context: ExtensionContext) {
       const cloudUrl = (await getNxCloudStatus())?.nxCloudUrl;
 
       if (cloudUrl) {
+        getTelemetry().featureUsed('nx.openCloudApp');
         const cloudUrlWithTracking = `${cloudUrl}?utm_source=nxconsole`;
         commands.executeCommand('vscode.open', cloudUrlWithTracking);
       } else {
