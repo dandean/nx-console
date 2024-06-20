@@ -89,7 +89,7 @@ describe('nx cloud', () => {
     afterEach(() => {
       writeFileSync(nxJsonPath, oldNxJsonContents);
     });
-    it('should return true & default cloud url after running nx connect', async () => {
+    it('should return true & default cloud url after setting access token', async () => {
       modifyJsonFile(nxJsonPath, (json) => ({
         ...json,
         nxCloudAccessToken: 'fake-token',
@@ -105,7 +105,7 @@ describe('nx cloud', () => {
       );
     });
 
-    it('should return true & custom cloud url after running nx connect with env', async () => {
+    it('should return true & custom cloud url after setting access token & cloud url', async () => {
       modifyJsonFile(nxJsonPath, (json) => ({
         ...json,
         nxCloudAccessToken: 'fake-token',

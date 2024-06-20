@@ -88,7 +88,9 @@ describe('nx cloud - nx 16', () => {
       writeFileSync(nxJsonPath, oldNxJsonContents);
     });
     it('should return true & default cloud url after running nx connect', async () => {
-      execSync('echo | npx nx@16 connect --verbose', {
+      const echoCommand = process.platform === 'win32' ? 'echo.' : 'echo';
+
+      execSync(`${echoCommand}  | npx nx@16 connect --verbose`, {
         cwd: join(e2eCwd, workspaceName),
       });
 
