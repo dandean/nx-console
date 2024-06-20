@@ -15,6 +15,7 @@ import com.intellij.ui.ScrollPaneFactory
 import com.intellij.ui.SideBorder
 import com.intellij.ui.dsl.builder.Align
 import com.intellij.ui.dsl.builder.panel
+import com.intellij.ui.util.minimumHeight
 import dev.nx.console.nx_toolwindow.tree.NxProjectsTree
 import dev.nx.console.nx_toolwindow.tree.NxTreeStructure
 import dev.nx.console.nxls.NxRefreshWorkspaceAction
@@ -63,6 +64,7 @@ class NxToolWindowPanel(private val project: Project) : SimpleToolWindowPanel(tr
             NxCloudPanel(project).apply {
                 layout = BorderLayout()
                 setBorder(SideBorder(OnePixelDivider.BACKGROUND, SideBorder.TOP))
+                minimumHeight = 50
             }
 
         val splitter = JBSplitter(true, "NxConsole.Toolwindow.Splitter", 0.7f)

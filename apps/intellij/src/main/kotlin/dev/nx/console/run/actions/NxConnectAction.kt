@@ -14,6 +14,7 @@ import com.intellij.openapi.components.Service
 import com.intellij.openapi.project.Project
 import dev.nx.console.NxIcons
 import dev.nx.console.nxls.NxlsService
+import dev.nx.console.telemetry.TelemetryService
 import dev.nx.console.utils.Notifier
 import dev.nx.console.utils.NxGeneralCommandLine
 import kotlinx.coroutines.CoroutineScope
@@ -42,6 +43,7 @@ class NxConnectService(val project: Project, val cs: CoroutineScope) {
                     )
                     return@withContext
                 }
+                TelemetryService.getInstance(project).featureUsed("nx.connectToCloud")
 
                 val commandLine = NxGeneralCommandLine(project, listOf("connect"))
 

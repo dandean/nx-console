@@ -14,6 +14,7 @@ import dev.nx.console.nx_toolwindow.NxToolWindowPanel.Companion.NX_TOOLBAR_PLACE
 import dev.nx.console.nxls.NxWorkspaceRefreshListener
 import dev.nx.console.nxls.NxlsService
 import dev.nx.console.run.actions.NxConnectAction
+import dev.nx.console.telemetry.TelemetryService
 import java.awt.event.ComponentAdapter
 import java.awt.event.ComponentEvent
 import javax.swing.JComponent
@@ -64,7 +65,11 @@ class NxCloudPanel(private val project: Project) : JBPanel<NxCloudPanel>() {
                                 "View Nx Cloud App",
                                 object : AnAction() {
                                     override fun actionPerformed(e: AnActionEvent) {
-                                        BrowserUtil.open(cloudStatus.nxCloudUrl)
+                                        val urlWithTracking =
+                                            "${cloudStatus.nxCloudUrl}?utm_campaign=open-cloud-app&utm_medium=cloud-promo&utm_source=nxconsole"
+                                        TelemetryService.getInstance(project)
+                                            .featureUsed("nx.openCloudApp")
+                                        BrowserUtil.open(urlWithTracking)
                                     }
                                 },
                                 NX_TOOLBAR_PLACE
@@ -80,7 +85,7 @@ class NxCloudPanel(private val project: Project) : JBPanel<NxCloudPanel>() {
     private fun getNotConnectedContent(): JComponent {
         return panel {
             indent {
-                row { text("<h3>Looks like you're not connected to Nx Cloud.</h3> ") }
+                row { text("<h3>You're not connected to Nx Cloud.</h3> ") }
                 row { button("Connect to Nx Cloud", NxConnectAction()).align(Align.CENTER) }
                 row { text(nxCloudLearnMoreText) }
             }
